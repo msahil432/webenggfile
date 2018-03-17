@@ -1,0 +1,78 @@
+
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../full working/main.css" />
+</head>
+<body>
+    <center>
+        <br>
+        <br>
+        <br>
+
+        <h2>Login</h2>
+        <form method="POST" name="login">
+            <label>Username</label>
+            <input type="text" name="username"/><br>
+            <label>Password:</label>
+            <input type="password" name="password"/><br>
+            <input type="submit"/ value="Login"><br>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <h3>Don't have an account, Sign UP!</h3>
+        <form method="POST" name="signup">
+            <label>Enter name</label>
+            <input type="text" name="name" value=""/><br>
+            <label>Choose Username</label>
+            <input type="text" name="username" value=""/><br>
+            <label>Enter Email</label>
+            <input type="text" name="email" value=""/><br>
+            <label>Create Password:</label>
+            <input type="password" name="password" value=""/><br>
+            <input type="button" value="Create Account" onclick="validate(this.form)"/>
+            <input type="reset"/>
+        </form>
+        <script type="text/javascript">
+            function validate(form){
+                var name = form.name.value;
+                var uname = form.username.value;
+                var email = form.email.value;
+                var password = form.password.value;
+
+                console.log("Validating :"+name+" - "+uname+" - "+email+" - "+password);
+                if(name == "" | uname == ""
+                    | email == "" | password == ""){
+                    alert("Complete the Form");
+                    console.log("Empty Form")
+                    return;
+                }
+
+                var unameRegx = /^[a-zA-Z0-9]+$/;
+                var emailRegx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                var passwordRegx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,}/gm
+                if(!uname.match(unameRegx)){
+                    alert("Enter Valid Username")
+                    console.log("invalid username")
+                }else if(!email.match(emailRegx)){
+                    alert("Enter Valid Email Address")
+                    console.log("Invalid email")
+                }else if(!password.match(passwordRegx)){
+                    alert("Create Stronger Password!")
+                    console.log("Weak password")
+                }else{
+                    var date = new Date();
+                    var n = date.toDateString();
+                    var time = date.toLocaleTimeString();
+
+                    alert("Signup Successful at "+time+" "+date);
+                    console.log("Signup success")
+                }
+            }
+        </script>
+    </center>
+</body>
+</html>
