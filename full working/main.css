@@ -23,3 +23,19 @@ input {
     display: inline-block;
     margin: 5px;
 }
+button{
+    background: #FFFFFF90;
+}
+.noscrollbars{
+    overflow: hidden;
+}
+.cbutton{
+    width: 60px;
+}
+.c2button{
+    width: 122px;
+}
+#coutput{
+    width: 100%;
+    text-align: right;
+}
