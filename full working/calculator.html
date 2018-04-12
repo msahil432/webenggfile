@@ -56,122 +56,124 @@
 		</th>
 	</table>
 	<script type="text/javascript">
-		function addtoev() {
-		  var bns = document.getElementsByTagName("button");
-		  for (i = 0; i < bns.length; i++) {
-		    bns[i].addEventListener("click", function() {
-		    	calculate(this)  }
-		    );
-		  }
-		}
+function addtoev() {
+  var bns = document.getElementsByTagName("button");
+  for (i = 0; i < bns.length; i++) {
+    bns[i].addEventListener("click", function() {
+    	calculate(this)  }
+    );
+  }
+}
 
-		window.addEventListener("load",function() {
-		  addtoev();
-		});
-		function calculate(btn){
-			var text = document.getElementById("coutput");
-			var val = btn.innerHTML;
-			console.log("Current input "+text.value+", clicked :"+val);
-			try{
-			switch(val){
-				case "0":  case "1":  case "2":  case "3":	case "4":
-				case "5":  case "6":  case "7":  case "8":  case "9":
-				case "+":  case "-":  case "*":  case "/":
-				case ".":{
-					text.value += val;
-					break;
-				}
-				case "=":{
-					console.log("calculating... "+text.value)
-					text.value = eval(text.value);
-					break;
-				}
-				case "Del":{
-					text.value = text.value.substring(0, text.value.length - 1)
-					break;
-				}
-				case "Clear":{
-					text.value = ""
-					break;
-				}
-				case "sin x":{
-					text.value = Math.sin(parseFloat(eval(text.value)))
-					break;
-				}
-				case "cos x":{
-					text.value = Math.cos(parseFloat(eval(text.value)))
-					break;
-				}
-				case "tan x":{
-					text.value = Math.tan(parseFloat(eval(text.value)))
-					break;
-				}
-				case "log x":{
-					text.value = Math.log(parseFloat(eval(text.value)))
-					break;
-				}
-				case "√x":{
-					text.value = Math.sqrt(parseFloat(eval(text.value)))
-					break;
-				}
-				case "3√x":{
-					text.value = Math.cbrt(parseFloat(eval(text.value)))
-					break;
-				}
-				case "10^x":{
-					var t = parseInt(eval(text.value))
-					if(t==0){	text.value = "0"}
-					else {	text.value = "10"}
-					while(t>1.49){
-						text.value += "*10"
-						t--;
-					}
-					text.value= eval(text.value)
-					break;
-				}
-				case "e^x":{
-					var t = parseInt(eval(text.value))
-					if(t==0){	text.value = "0"}
-					else {	text.value = "2.71828"}
-					while(t>1.49){
-						text.value += "*2.71828"
-						t--;
-					}
-					text.value= eval(text.value)
-					break;
-				}
-				case "x^2":{
-					console.log("calculating... ("+text.value+")^2")
-					text.value = eval(text.value+"*"+"text.value")
-					break;
-				}
-				case "x^3":{
-					text.value = eval(text.value+"*"+"text.value"+"*"+"text.value")
-					break;
-				}
-				case "1/x":{
-					text.value = eval("1/"+eval(text.value))
-					break;
-				}
-				case "x!":{
-					text.value = eval(text.value)
-					var t = (parseFloat(text.value))-1
-					while(t>1){
-						text.value = text.value+"*"+t;
-						t--;
-					}
-					text.value = eval(text.value)
-					break;
-				}
-				default:{
-					console.log("invaid input from calculator")
-					break;
-				}
-			}
-			}catch(e){
-				alert(e);
-			}
+window.addEventListener("load",function() {
+  addtoev();
+});
+function calculate(btn){
+	var text = document.getElementById("coutput");
+	var val = btn.innerHTML;
+	console.log("Current input "+text.value+", clicked :"+val);
+	try{
+	switch(val){
+		case "0":  case "1":  case "2":  case "3":	case "4":
+		case "5":  case "6":  case "7":  case "8":  case "9":
+		case "+":  case "-":  case "*":  case "/":
+		case ".":{
+			text.value += val;
+			break;
 		}
+		case "=":{
+			console.log("calculating... "+text.value)
+			text.value = eval(text.value);
+			break;
+		}
+		case "Del":{
+			text.value = text.value.substring(0, text.value.length - 1)
+			break;
+		}
+		case "Clear":{
+			location.reload();
+			break;
+		}
+		case "sin x":{
+			text.value = Math.sin(parseFloat(eval(text.value)))
+			break;
+		}
+		case "cos x":{
+			text.value = Math.cos(parseFloat(eval(text.value)))
+			break;
+		}
+		case "tan x":{
+			text.value = Math.tan(parseFloat(eval(text.value)))
+			break;
+		}
+		case "log x":{
+			text.value = Math.log(parseFloat(eval(text.value)))
+			break;
+		}
+		case "√x":{
+			text.value = Math.sqrt(parseFloat(eval(text.value)))
+			break;
+		}
+		case "3√x":{
+			text.value = Math.cbrt(parseFloat(eval(text.value)))
+			break;
+		}
+		case "10^x":{
+			var t = parseInt(eval(text.value))
+			if(t==0){	text.value = "0"}
+			else {	text.value = "10"}
+			while(t>1.49){
+				text.value += "*10"
+				t--;
+			}
+			text.value= eval(text.value)
+			break;
+		}
+		case "e^x":{
+			var t = parseInt(eval(text.value))
+			if(t==0){	text.value = "0"}
+			else {	text.value = "2.71828"}
+			while(t>1.49){
+				text.value += "*2.71828"
+				t--;
+			}
+			text.value= eval(text.value)
+			break;
+		}
+		case "x^2":{
+			console.log("calculating... ("+text.value+")^2")
+			text.value = eval(text.value)
+			text.value = eval(text.value+"*"+text.value)
+			break;
+		}
+		case "x^3":{
+			text.value = eval(text.value)
+			text.value = eval(text.value+"*"+"text.value"+"*"+"text.value")
+			break;
+		}
+		case "1/x":{
+			text.value = eval("1/"+eval(text.value))
+			break;
+		}
+		case "x!":{
+			text.value = eval(text.value)
+			var t = (parseFloat(text.value))-1
+			while(t>1){
+				text.value = text.value+"*"+t;
+				t--;
+			}
+			text.value = eval(text.value)
+			break;
+		}
+		default:{
+			console.log("invaid input from calculator")
+			break;
+		}
+	}
+	}catch(e){
+		alert(e);
+	}
+}
 	</script>
 </body>
 </html>
